@@ -1,4 +1,4 @@
-# Nezha Modify
+# nzhotaru-modify
 
 
 
@@ -9,7 +9,7 @@
 
 
 ## What's modified
-实际上只改了dashboard，服务页和任务页等有生之年吧（摸）
+只改了dashboard，服务页和任务页等有生之年吧（摸）
 ### js脚本修改
 1. [头图显示区域大小](./mya-ne.html#L3-L7)
 2. [头图区域标题](./mya-ne.html#L9-L23)
