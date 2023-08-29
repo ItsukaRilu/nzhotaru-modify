@@ -1,0 +1,90 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 修改头图显示大小
+        const h1Element = document.querySelector("section.hotaru-cover h1");
+        if (h1Element) {
+            h1Element.style.lineHeight = "48rem";
+        }
+
+        // 修改大标题
+        const strongElement = document.querySelector(".hotaru-cover strong");
+        if (strongElement) {
+            strongElement.textContent = "みゃーねぇはあなたを見ている";
+            // みゃーねぇ: #c38a8b / rgb(196, 139, 140)
+            // strongElement.style.color = "rgba(196, 139, 140, 0.75)";
+        }
+        const newLink = document.createElement("a");
+        newLink.target = "_blank";
+        newLink.href = "https://twitter.com/watatentv";
+        newLink.style.color = "rgba(231, 151, 129, 0.25)";
+        while (strongElement.firstChild){
+            newLink.appendChild(strongElement.firstChild);
+        }
+        strongElement.parentNode.replaceChild(newLink, strongElement);
+
+        // 强制使用白天模式
+        const bodyElement = document.querySelector("body");
+        if (bodyElement && bodyElement.classList.contains("dark")) {
+            bodyElement.removeAttribute("class");
+        }
+
+        // 隐藏sidebar
+        const sidebarContainer = document.querySelector(".sidebar-container");
+        sidebarContainer.style.display = "none";
+
+        // 修改hotaru主题中的main.css样式
+        const hotaruCover = document.querySelector(".hotaru-cover");
+        if (hotaruCover) {
+            // 修改背景图
+            hotaruCover.style.background = "url(../static/theme-hotaru/img/tenshi.png) top no-repeat";
+            hotaruCover.style.backgroundSize = "100%";
+        }
+
+        // 修改footer
+        const footerElement = document.querySelector("footer");
+        // 隐藏服务和后台入口
+        const serviceEntry = document.querySelector('a[href="/service"]');
+        const serverEntry = document.querySelector('a[href="/server"]');
+        serviceEntry.style.display = "none";
+        serverEntry.style.display = "none";
+
+        // 修改footer内容
+        if (footerElement) {
+            const pElement = document.querySelector("p");
+            if (pElement) {
+                pElement.style.display = "none";
+            }
+            const newLine = document.createElement("p");
+            newLine.style.textAlign = "center";
+            newLine.style.padding = "15px";
+            // rilu: #f6a9bb / rgb(246, 169, 187)
+            newLine.innerHTML = '管理员：<a href="https://www.bilibili.com" style="color:#f6a9bb;" target="_blank">rilu</a>';
+            footerElement.appendChild(newLine);
+        }
+
+        // 修改favicon
+        const favicon = document.querySelector("link[rel='shortcut icon']");
+        favicon.href = "https://rstatus.rilu.moe/favicon.ico";
+
+    });
+</script>
+
+<style>
+    /* 修改进度条颜色 */
+    .ui.fine.progress> .bar {
+        background-color: #e79781 !important;
+    }
+
+    /* 添加背景图区域灰色蒙版 */
+    .hotaru-cover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 576px;
+        background: rgba(143, 135, 156, 0.15);
+        pointer-events: none;
+        z-index: 1;
+    }
+</style>
